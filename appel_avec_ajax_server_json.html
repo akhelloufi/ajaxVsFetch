@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <h1>Ajax avec methode classic var xhttp = new XMLHttpRequest();</h1>
+ 
+    <div id="d1" style="border:1px solid red;"></div>
+    <script>
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                console.log(this)
+                if (this.readyState == 4 && this.status == 200) {
+                   var objson=JSON.parse( this.responseText);
+                   
+                   console.log(objson)
+
+                   creerDomDiv(objson.data);
+                   
+            }
+            };
+            xhttp.open("GET", "https://my-json-server.typicode.com/akhelloufi/json/db", true);
+            xhttp.send();
+        }
+        function creerDomDiv(T){
+            var d1=document.getElementById("d1");
+            //construire un dom d element li dans div
+            var ul1=document.createElement('ul');
+            for(i=0;i<=T.length-1;i++){
+                var li1=document.createElement('li');
+                var textli1=document.createTextNode(T[i]);
+                if(i%2==0){li1.style.backgroundColor="#ff0000";}
+                else{li1.style.backgroundColor="#00ff00";}
+                li1.appendChild(textli1);
+                ul1.appendChild(li1);
+            }
+            d1.appendChild(ul1);
+        }
+        loadDoc();
+    </script>
+</body>
+</html>
