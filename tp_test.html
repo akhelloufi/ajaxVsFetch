@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script>
+        // you can write to stdout for debugging purposes, e.g.
+// console.log('this is a debug message');
+
+function solution(S,K) {
+    // write your code in JavaScript (Node.js 8.9.4)
+     
+    let T=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+   let i=0;
+    let pos=-1;
+    for(i=0;i<T.length;i++){
+        if(T[i].toLowerCase()==S.toLowerCase()){
+            pos=i;
+            break;
+        }
+    }
+    console.log('pos'+pos);
+    let n=6-pos;
+    console.log('n'+n);
+    let kk=K-n-1;
+    if(kk<0){return T[pos+K];}
+    if(kk>6){
+     let reste=0;
+    console.log(reste);
+    q=kk%7;console.log('q'+q)
+    
+    
+    return T[q];
+    }else{
+        return T[kk];
+    }
+
+}
+ 
+document.write(solution('Sat',23));
+    </script>
+
+</body>
+</html>

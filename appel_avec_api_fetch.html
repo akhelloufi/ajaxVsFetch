@@ -17,6 +17,7 @@
         Fetch peut faire de même d'une manière plus simple.</p>
     <div id="d1" style="border:1px solid red;"></div>
     <script>
+        
         async function getText(url) {
         let x = await fetch(url);
         let y = await x.text();
@@ -24,6 +25,7 @@
         creerDomDiv(obJson.data);
         }
         getText("https://my-json-server.typicode.com/akhelloufi/json/db");
+
         function creerDomDiv(T){
             var d1=document.getElementById("d1");
             //construire un dom d element li dans div

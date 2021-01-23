@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div id="demo">
+<h2>The XMLHttpRequest Object</h2>
+
+</div>
+<button type="button" onclick="loadDoc()">Change Content</button>
+<script>
+function loadDoc() {
+  var x = new XMLHttpRequest();
+  
+  x.onreadystatechange = function() {
+  
+    if (this.readyState == 4 && this.status == 200) {
+        var obj=JSON.parse(this.responseText);
+      document.getElementById("demo").innerHTML = obj.age
+    }
+  };
+  x.open("GET", "fichier.txt", true);
+  x.send();
+}
+</script>
+
+</body>
+</html>

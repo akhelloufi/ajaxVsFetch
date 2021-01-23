@@ -9,27 +9,21 @@
     <script src='main.js'></script>
 </head>
 <body>
-    <h1>Ajax avec methode classic var xhttp = new XMLHttpRequest();</h1>
- 
+    <h1>Ajax avec api fetch nouveau</h1>
+    <p style="text-align: center;margin:0 auto;width:50%;border:1px solid #ffffff">L'interface de l'API Fetch permet au navigateur Web d'envoyer 
+        des requêtes HTTP aux serveurs Web.
+
+        Si vous utilisez l'objet XMLHttpRequest, 
+        Fetch peut faire de même d'une manière plus simple.</p>
     <div id="d1" style="border:1px solid red;"></div>
     <script>
-        function loadDoc() {
-            var xhttp = new XMLHttpRequest();
-            //evenement
-            xhttp.onreadystatechange = function() {
-                console.log(this)
-                if (this.readyState == 4 && this.status == 200) {
-                   var objson=JSON.parse( this.responseText);
-                   
-                   console.log(objson)
+        fetch ("https://my-json-server.typicode.com/akhelloufi/json/db")
+        .then(x => x.text())
+        .then(y =>{ let objJson=JSON.parse (y); creerDomDiv(objJson.data);;});
 
-                   creerDomDiv(objson.data);
-                   
-            }
-            };
-            xhttp.open("GET", "https://my-json-server.typicode.com/akhelloufi/json/db", true);
-            xhttp.send();
-        }
+
+       
+        
         function creerDomDiv(T){
             var d1=document.getElementById("d1");
             //construire un dom d element li dans div
@@ -44,7 +38,7 @@
             }
             d1.appendChild(ul1);
         }
-        loadDoc();
+         
     </script>
 </body>
 </html>
